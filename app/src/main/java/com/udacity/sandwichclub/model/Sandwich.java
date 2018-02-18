@@ -4,6 +4,42 @@ import java.util.List;
 
 public class Sandwich {
 
+    //region Example JSON:
+    /*
+        {
+           "name":{
+              "mainName":"Bosna",
+              "alsoKnownAs":[
+                 "Bosner"
+              ]
+           },
+           "placeOfOrigin":"Austria",
+           "description":"Bosna
+                    is a spicy Austrian fast food dish, said to have originated in either Salzburg or Linz.
+                    It is now popular all over western Austria and southern
+                    Bavaria.",
+           "image":"https://upload.wikimedia.org/wikipedia/commons/c/ca/Bosna_mit_2_Bratw%C3%BCrsten.jpg",
+           "ingredients":[
+              "White
+                    bread",
+              "Bratwurst",
+              "Onions",
+              "Tomato ketchup",
+              "Mustard",
+              "Curry powder"
+           ]
+        }
+    */
+    //endregion
+
+    public static String fName = "name";
+    public static String fMainName = "mainName";
+    public static String fAlsoKnownAs = "alsoKnownAs";
+    public static String fPlaceOfOrigin = "placeOfOrigin";
+    public static String fDescription = "description";
+    public static String fImage = "image";
+    public static String fIngredients = "ingredients";
+
     private String mainName;
     private List<String> alsoKnownAs = null;
     private String placeOfOrigin;
