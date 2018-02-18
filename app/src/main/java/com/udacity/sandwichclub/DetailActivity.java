@@ -1,6 +1,7 @@
 package com.udacity.sandwichclub;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -75,14 +76,28 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void populateUI(Sandwich sandwich) {
-        mtvDescription.setText(TextUtils.isEmpty(sandwich.getDescription()) ? getString(R.string.detail_notavailable) : sandwich.getDescription());
-        mtvOrigin.setText(TextUtils.isEmpty(sandwich.getPlaceOfOrigin()) ? getString(R.string.detail_unknown) : sandwich.getPlaceOfOrigin());
+        //mtvDescription.setText(TextUtils.isEmpty(sandwich.getDescription()) ? getString(R.string.detail_notavailable) : sandwich.getDescription());
+        writeToTextView(mtvDescription,sandwich.getDescription(),getString(R.string.detail_notavailable));
 
-        String sAka = stringFromList(sandwich.getAlsoKnownAs());
-        mtvAKA.setText(TextUtils.isEmpty(sAka) ? getString(R.string.detail_unknown)+NEWLINE : sAka);
+        //mtvOrigin.setText(TextUtils.isEmpty(sandwich.getPlaceOfOrigin()) ? getString(R.string.detail_unknown) : sandwich.getPlaceOfOrigin());
+        writeToTextView(mtvOrigin,sandwich.getPlaceOfOrigin(),getString(R.string.detail_unknown));
 
-        String sIngred = stringFromList(sandwich.getIngredients());
-        mtvIngredients.setText(TextUtils.isEmpty(sIngred) ? getString(R.string.detail_notavailable) : sIngred);
+        //String sAka = stringFromList(sandwich.getAlsoKnownAs());
+        //mtvAKA.setText(TextUtils.isEmpty(sAka) ? getString(R.string.detail_unknown)+NEWLINE : sAka);
+        writeToTextView(mtvAKA,stringFromList(sandwich.getAlsoKnownAs()),getString(R.string.detail_unknown)+NEWLINE);
+
+        //String sIngred = stringFromList(sandwich.getIngredients());
+        //mtvIngredients.setText(TextUtils.isEmpty(sIngred) ? getString(R.string.detail_notavailable) : sIngred);
+        writeToTextView(mtvIngredients,stringFromList(sandwich.getIngredients()),getString(R.string.detail_notavailable));
+    }
+
+    private void writeToTextView(TextView textView, String text, String errorText){
+        if(TextUtils.isEmpty(text)){
+            textView.setText(errorText);
+            textView.setTypeface(null, Typeface.ITALIC);
+            return;
+        }
+        textView.setText(text);
     }
 
     private static String stringFromList(List<String> list){
