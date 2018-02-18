@@ -12,10 +12,14 @@ import com.squareup.picasso.Picasso;
 import com.udacity.sandwichclub.model.Sandwich;
 import com.udacity.sandwichclub.utils.JsonUtils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_POSITION = "extra_position";
     private static final int DEFAULT_POSITION = -1;
+    private static final String NEWLINE = "\n";
 
     //Sandwich mSandwich;
     ImageView mivSandwich;
@@ -35,6 +39,7 @@ public class DetailActivity extends AppCompatActivity {
         mtvAKA= findViewById(R.id.also_known_tv);
         mtvDescription= findViewById(R.id.description_tv);
         mtvOrigin= findViewById(R.id.origin_tv);
+        mtvIngredients= findViewById(R.id.ingredients_tv);
 
         int position = intent.getIntExtra(EXTRA_POSITION, DEFAULT_POSITION);
         if (position == DEFAULT_POSITION) {
@@ -70,6 +75,22 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void populateUI(Sandwich sandwich) {
+        mtvDescription.setText(TextUtils.isEmpty(sandwich.getDescription()) ? getString(R.string.detail_notavailable) : sandwich.getDescription());
+        mtvOrigin.setText(TextUtils.isEmpty(sandwich.getPlaceOfOrigin()) ? getString(R.string.detail_unknown) : sandwich.getPlaceOfOrigin());
+
+        String sAka = stringFromList(sandwich.getAlsoKnownAs());
+        mtvAKA.setText(TextUtils.isEmpty(sAka) ? getString(R.string.detail_unknown)+NEWLINE : sAka);
+
+        String sIngred = stringFromList(sandwich.getIngredients());
+        mtvIngredients.setText(TextUtils.isEmpty(sIngred) ? getString(R.string.detail_notavailable) : sIngred);
+    }
+
+    private static String stringFromList(List<String> list){
+        StringBuilder builder = new StringBuilder();
+        for (String item:list){
+            builder.append(item+NEWLINE);
+        }
+        return builder.toString();
     }
 
 }
