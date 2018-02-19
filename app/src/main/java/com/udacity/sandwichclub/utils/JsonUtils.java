@@ -23,7 +23,7 @@ public class JsonUtils {
 
         Sandwich sandwich = new Sandwich();
 
-        JSONObject jsonObjAll = null;
+        JSONObject jsonObjAll;
         try {
             jsonObjAll = new JSONObject(json);
 

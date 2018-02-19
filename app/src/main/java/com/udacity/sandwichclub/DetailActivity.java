@@ -13,7 +13,6 @@ import com.squareup.picasso.Picasso;
 import com.udacity.sandwichclub.model.Sandwich;
 import com.udacity.sandwichclub.utils.JsonUtils;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class DetailActivity extends AppCompatActivity {
@@ -23,8 +22,11 @@ public class DetailActivity extends AppCompatActivity {
     private static final String NEWLINE = "\n";
 
     //Sandwich mSandwich;
-    ImageView mivSandwich;
-    TextView mtvOrigin,mtvAKA,mtvDescription,mtvIngredients;
+    private ImageView mivSandwich;
+    private TextView mtvOrigin;
+    private TextView mtvAKA;
+    private TextView mtvDescription;
+    private TextView mtvIngredients;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,7 +105,7 @@ public class DetailActivity extends AppCompatActivity {
     private static String stringFromList(List<String> list){
         StringBuilder builder = new StringBuilder();
         for (String item:list){
-            builder.append(item+NEWLINE);
+            builder.append(item).append(NEWLINE);
         }
         return builder.toString();
     }

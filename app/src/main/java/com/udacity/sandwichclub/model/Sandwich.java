@@ -32,13 +32,13 @@ public class Sandwich {
     */
     //endregion
 
-    public static String fName = "name";
-    public static String fMainName = "mainName";
-    public static String fAlsoKnownAs = "alsoKnownAs";
-    public static String fPlaceOfOrigin = "placeOfOrigin";
-    public static String fDescription = "description";
-    public static String fImage = "image";
-    public static String fIngredients = "ingredients";
+    public static final String fName = "name";
+    public static final String fMainName = "mainName";
+    public static final String fAlsoKnownAs = "alsoKnownAs";
+    public static final String fPlaceOfOrigin = "placeOfOrigin";
+    public static final String fDescription = "description";
+    public static final String fImage = "image";
+    public static final String fIngredients = "ingredients";
 
     private String mainName;
     private List<String> alsoKnownAs = null;
